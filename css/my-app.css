@@ -1,0 +1,239 @@
+.hide {
+    display:none;
+}
+/* color boxes */
+.rect-wrap{
+    padding-top:20px;
+}
+.rect {
+    color:white;
+    font-size:45px;
+    background-color:#3593E3;
+    text-align:center;	
+    border-radius: 3px;
+    min-width: 50px;
+    min-height: 50px;
+    -webkit-border-radius: 3px;
+    
+}
+.rect.total{
+    background-color:#3593E3;
+}
+.rect.ordered{
+    background-color: #7BCF19;
+}
+.rect.aval{
+    background-color: #D71C0E;
+}
+/*
+.checked-in .rect.aval,
+.checked-in .rect.ordered{
+    background-color: #7BCF19;
+}
+.checked-out .rect.aval,
+.checked-out .rect.ordered{
+    background-color: #D71C0E;
+}
+*/
+/* entire container, keeps perspective */
+.flip-container {
+	-webkit-perspective: 1000;
+	perspective: 1000;
+}
+.flip-container.flip .flipper {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);	
+}
+.flip-container, .flip-container .front, .flip-container .back {
+	width: 60px;
+	height: 65px;
+}
+
+/* flip speed goes here */
+.flip-container .flipper {
+	-webkit-transition:  0.6s;
+	transition: 0.6s;
+	-webkit-transform-style:  preserve-3d;
+	transform-style: preserve-3d;
+	
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.flip-container .front, .flip-container .back {
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+/* front pane, placed above back */
+.flip-container .front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.flip-container .back {
+	-webkit-transform: rotateY(180deg);
+	transform: rotateY(180deg);
+}
+
+/*
+.item-content.info .item-inner{
+    background-color: #f2f2f2;
+    padding: 5px;
+}
+*/
+.list-block.media-list .item-link .item-title {
+    font-weight: bold;
+}
+
+.content-block.top{
+    margin-top:-1px;
+}
+.content-block.top .content-block-inner{
+    padding-top:20px;
+}
+
+i.icon.icon-refresh {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/i-refresh-blue.png");
+}
+i.icon.icon-qrcode {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/i-qrcode.png");
+}
+i.icon.icon-star {
+  width: 29px;
+  height: 29px;
+  background-image: url("../img/i-star.png");
+}
+div[data-page="passengers"] .media-list .item-content{
+    padding-left: 30px;
+}
+div[data-page="passengers"] .media-list .item-content .icon-star{
+    position:absolute;
+    top:5px;
+    left:-3px;
+}
+.toolbar .button.icon.icon-refresh{
+    border:1px solid transparent;
+}
+
+.button.button-white {
+border-color: #f2f2f2;
+background: #f2f2f2;
+color:black;
+}
+.button.button-white:active{
+  opacity: 0.6;
+}
+
+.row.warning{
+    background-color: #FBA510;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin: 0 0 20px 0;
+    font-size: 20px;
+}
+
+.item-content .item-text{
+    height: auto;
+}
+.item-content .item-text p{
+    margin: 0.1em 0;
+}
+.list-block.media-list .item-link.disabled .item-title-row {
+    background-image: none;
+}
+
+.page[data-page="cruise"] .media-list .item-media {
+    position:relative;
+    max-width: 40%;
+    min-height: 160px;
+    display: block;
+}
+.media-list .item-media img
+{
+    /*height: 110px;	*/
+    width: 100%;
+    border: 1px solid #BBB;
+    border-radius: 5px;
+    
+    /*
+    -webkit-box-shadow: white 0px -1px 0px inset, rgba(0, 0, 0, 0.88) 0px 1px 10px;
+    -moz-box-shadow: white 0px -1px 0px inset, rgba(0,0,0,0.88) 0px 1px 10px;
+    box-shadow: white 0px -1px 0px inset, rgba(0, 0, 0, 0.88) 0px 1px 10px;
+    */
+}
+.media-list .item-media .avatar-bg {
+    margin-left:-200px;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: -webkit-linear-gradient(-30deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .17) 50%, rgba(255, 255, 255, 0) 50.1%) no-repeat;
+    background: -moz-linear-gradient(-30deg, rgba(255, 255, 255, .5), rgba(255, 255, 255, .17) 50%, rgba(255, 255, 255, 0) 50.1%) no-repeat;
+}
+
+
+
+/*** check in form ***/
+.form-checkin.checked-in .btn-checkin-wrap {
+    display:none;
+}
+.form-checkin.checked-out .btn-checkout-wrap,
+.form-checkin.checked-out .warning{
+    display:none;
+}
+
+/***** cruises list on left panel ******/
+.panel {
+    background: #222;
+    color: #dddddd;
+}
+.panel .cruises-list .item-content {
+    padding-left: 0px;
+}    
+.panel .cruises-list ul{
+    background-color: #222;color: #dddddd;
+}
+.panel .content-block-title {
+    color: #dddddd;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.panel .cruises-list ul .item-inner .item-title{float:right;text-transform:lowercase;font-weight: normal;max-height: none;  text-align: right;  width: 75%;}
+.panel .cruises-list ul .item-inner .item-after{float:right;max-height: none;text-align: right;width: 75%;}
+.panel .cruises-list.list-block.media-list .item-media {
+    float: left;
+    margin-right: 5px;
+}
+.panel-left .rect{
+    font-size: 27px;
+    min-width: 40px;
+    min-height: 40px;
+}
+.panel-left .list-block.media-list .item-media{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+.panel-left .list-block.media-list .item-link .item-inner {
+    padding-right:0px;
+}
+/***** preloader on cruises list ******/
+.infinite-scroll-preloader {
+  margin-top:-20px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.infinite-scroll-preloader .preloader {
+  width:34px;
+  height:34px;
+}  
