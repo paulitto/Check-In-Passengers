@@ -47,25 +47,41 @@ $$(document).on('pageInit', function (e) {
 
 // get global cruises
 if (typeof globCruises == "undefined") {  
-    
+    var mFrom = moment("2014-06-25"); //today momentjs object
+    var mTo = moment("2014-06-25").add('days', 14); //today + 14 days
     //jsonp request
     $.ajax({
 	url: functionsPath+"get_cruises.php",
 	jsonp: "callback",
 	dataType: "jsonp",
 	data: {
-	    from: moment("2014-06-25").format('DD-MM-YYYY'),	
-	to: moment("2014-06-25").add('days', 14).format('DD-MM-YYYY')
+	    from: mFrom.format('DD-MM-YYYY'),	
+	    to: mTo.format('DD-MM-YYYY')
 	},
 	// work with the response
 	success: function(data){
 	    globCruises = data;
-	    //generate initial page for the next cruise
-	    createContentPage("cruise_template", {cruise:globCruises[0]});
-
-	    //generate initial cruises list
-	    var template = _.template($("#cruise_list_items_template").html(), {cruises: globCruises});
-	    $('.cruises-list ul').html(template);
+	    if (globCruises.length==0 || !globCruises){
+		var elNoData = $("<span>Unable to get cruises data<br />from "+mFrom.format('D MMM YYYY')+" to "+mTo.format('D MMM YYYY')+" </span>").css({
+		    position: "absolute",
+		    top: "50%",
+		    "text-align": "center",
+		    width: "100%",
+		    "color": "#777777",
+		    "font-weight": "bold"
+		});
+		//append nodata info to index page
+		$('.view-main div[data-page="index"]').html(elNoData);	
+		//append nodata info to cruises list
+		$('.cruises-list ul').append('<li style="font-size:14px;margin:15px 0px;"text-align":"center"">'+elNoData.html()+'</li>');
+	    }
+	    else {
+		//generate initial page for the next cruise
+		createContentPage("cruise_template", {cruise:globCruises[0]});
+		//generate initial cruises list
+		var template = _.template($("#cruise_list_items_template").html(), {cruises: globCruises});
+		$('.cruises-list ul').html(template);
+	    }
 	}
     });
     /*
